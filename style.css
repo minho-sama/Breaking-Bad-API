@@ -1,0 +1,144 @@
+::-webkit-scrollbar{
+    display:none;
+}
+
+body{
+    margin:0;
+    padding:0;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* background-image: url("https://i.imgur.com/WdlK7hU.png"); */
+    background-size:14vmax;
+
+}
+
+header{
+    background-color: rgb(58, 126, 58);
+}
+
+#logo{
+    height: 5vh;
+    position:absolute;
+    top:15px;
+    left: 5%;
+}
+
+#searchbox{
+    margin: 15px 32.5%;
+    width: 35%;
+    padding: 12px;
+    font-size: 15px;
+    border-radius: 5px;
+    border: none;
+
+}
+
+#searchbox:focus{
+    outline:none;
+}
+
+.fa-search{
+    width: 3%;
+    position:absolute;
+    top: 28px;
+    right: 30%;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.fa-search:hover{
+    transform: scale(1.2)
+}
+
+#random-btn{
+    position:absolute;
+    top: 17px;
+    right: 5%;
+    font-size: 20px;
+    border-radius: 4px;
+    padding: 7px;
+    cursor:pointer;
+    transition: 0.2s;
+    background-color: white;
+    color:green;
+    box-shadow: 3px 3px 2px rgb(8, 8, 8);
+}
+
+#random-btn:hover{
+    background-color: rgb(130, 201, 136);
+    color:white;
+}
+
+/*character profile*/
+.content{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 7%;
+    width: 80%;
+}
+.container{
+    border-radius: 7px;
+    background-color: rgb(53, 112, 53);
+    color:white;
+    box-shadow: 0 2rem 5rem 1rem rgba(0, 0, 0, 0.3);
+    /* box-shadow: 0 2rem 5rem 1rem rgba(110, 201, 115, 0.2); */
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.profilePic{
+    width: 30%;
+    border-radius: 7px;
+}
+.info{
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 60%;
+    margin-top: 1%;
+    /* border: 3px solid red; */
+    float:right;
+    line-height: 37px;
+}
+
+.name{
+    text-align: center;
+}
+
+.quotes{
+    font-style: italic;
+}
+
+.list{
+    list-style-type: none;
+    background-color: white;
+    color:black;
+    border: 1px solid black;
+    box-shadow: 3px 3px 2px rgb(8, 8, 8);
+    padding: 5px;
+    border-radius: 4px;
+    padding-left: 10px;
+    transition: 0.2s;
+}
+.list:hover{
+    background-color: rgb(241, 241, 241);
+}
+.list span{
+    font-weight: bold;
+}
+
+/*footer*/
+footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    width: 100%;
+    background-color: rgb(58, 126, 58);
+    padding: 5px;
+}
+footer a{
+    text-decoration: none;
+    color:white;
+}
+footer a:hover{
+    text-decoration: underline;
+}
