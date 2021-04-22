@@ -74,15 +74,17 @@ header{
     margin-right: 10%;
     margin-top: 7%;
     width: 80%;
+
+    opacity: 0;
+    transition: opacity 0.5s;
 }
 .container{
     border-radius: 7px;
     background-color: rgb(53, 112, 53);
     color:white;
+    /* opacity: 0;
+    transition: opacity 0.5s; */
     box-shadow: 0 2rem 5rem 1rem rgba(0, 0, 0, 0.3);
-    /* box-shadow: 0 2rem 5rem 1rem rgba(110, 201, 115, 0.2); */
-    opacity: 0;
-    transition: opacity 0.5s;
 }
 
 .profilePic{
