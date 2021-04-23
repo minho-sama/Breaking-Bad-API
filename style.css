@@ -22,17 +22,21 @@ header{
     left: 5%;
 }
 
-#searchbox{
+.searchbox{
     margin: 15px 32.5%;
     width: 35%;
     padding: 12px;
     font-size: 15px;
     border-radius: 5px;
     border: none;
-
 }
 
-#searchbox:focus{
+.searchboxEmpty{
+    border: 2px solid rgb(243, 13, 13);
+    border-radius: 5px;
+}
+
+.searchbox:focus{
     outline:none;
 }
 
@@ -77,6 +81,7 @@ header{
 
     opacity: 0;
     transition: opacity 0.5s;
+    /*!!!EZT UNCOMMENTELNI!!!*/
 }
 .container{
     border-radius: 7px;
@@ -126,6 +131,41 @@ header{
 .list span{
     font-weight: bold;
 }
+
+/*character not found error message*/
+
+.no-result{
+    color:black;
+    border-radius: 7px;
+    background-color: rgb(53, 112, 53);
+    color:white;
+    box-shadow: 0 2rem 5rem 1rem rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.no-result img{
+    width: 30%;
+    border-radius: 7px;
+}
+.no-result span{
+    font-weight: bold;
+}
+
+.no-result p{
+    background-color: white;
+    color:black;
+    border: 1px solid black;
+    box-shadow: 3px 3px 2px rgb(8, 8, 8);
+    padding: 5px;
+    border-radius: 4px;
+    padding-left: 10px;
+    transition: 0.2s;
+    line-height: 30px;
+}
+.no-result p:hover{
+    background-color: rgb(243, 240, 240);
+}
+
 
 /*footer*/
 footer{

@@ -1,21 +1,23 @@
-//todo: RANDOMBUTTON, enter a name pls ha üres a mező --> piros keret
-//hibauzenet couldnt find character --> odakúrni egy képet meg a feliratot, előtte content.innerHTML = ""
-//majd error handling: something went wrong: we couldnt find the character youre looking for/check your internet connection
-
-    //landing page
+// landing page
 window.addEventListener('load', () => {
     getCharByName('Walter White')
         .then(data => renderCharacter(data.img, data.name, data.occupation, data.nickname, data.appearance, data.portrayed, getCharQuote(data.name)))
         .finally(() =>{
             document.querySelector('.content').style.opacity = 1;
         })
-})
+});
 
+//search by name
 const search = document.querySelector('.fa-search');
 search.addEventListener('click', () =>{
     getCharByName()
         .then(data => {
+            if (data.name === undefined) throw new Error ('error 404: character not found')
             renderCharacter(data.img, data.name, data.occupation, data.nickname, data.appearance, data.portrayed, getCharQuote(data.name));
+        })
+        .catch((err) => {
+            console.log(err)
+            errorChar()
         })
         .finally( () => {
             document.querySelector('.content').style.opacity = 1;
@@ -28,6 +30,7 @@ const getCharByName = async function (name = getUSerInput()){
         const [data] = await res.json();
         
         console.log(data);
+        if (data === undefined) throw new Error('error 404: character not found')
         
         return data;
 
@@ -35,6 +38,26 @@ const getCharByName = async function (name = getUSerInput()){
         console.log(err);
     };
 };
+
+// random button gives a random character
+document.querySelector('#random-btn')
+    .addEventListener('click', () => {
+        getRandChar()
+        .then(data => {
+            renderCharacter(data.img, data.name, data.occupation, data.nickname, data.appearance, data.portrayed, getCharQuote(data.name));
+        })
+        .finally(() => {
+            document.querySelector('.content').style.opacity = '1';
+        });
+    });
+
+const getRandChar = async function () {
+    const res = await fetch('https://www.breakingbadapi.com/api/character/random');
+    const [data] = await res.json();
+    console.log(data)
+
+    return data 
+}
 
 function getCharQuote (name){
         console.log(name.split(" "));
@@ -63,10 +86,32 @@ function getCharQuote (name){
     }
 
 function getUSerInput(){
-    const search = document.querySelector('#searchbox')
-    if (search.value === "") return alert('error message: pls enter a name'); //itt egy keretformázás lesz setTimeouttal h töltse ki pls a mezőt
+    const search = document.querySelector('.searchbox')
+    if (search.value === "") return emptyField();
     return search.value
 }
+function emptyField() {
+    const search = document.querySelector('.searchbox')
+    search.classList.add('searchboxEmpty')
+
+    setTimeout(() => {
+        search.classList.remove('searchboxEmpty')
+    }, 1500);
+};
+
+//no character found error message
+function errorChar() {
+    clearContent()
+    const content = document.querySelector('.content');
+    const message = document.createElement('div');
+    message.classList.add('no-result');
+    message.innerHTML = `
+            <img src = "img/heisenberg-logo.png">
+            <p><span>Error 404</span><br> We couldn't find the character you're looking for</p>
+        `;
+    content.appendChild(message);
+    // content.style.opacity = 1;
+};
 
 async function renderCharacter (img, name, occ, nick, seasons, port, quote){
     clearContent();
@@ -92,7 +137,8 @@ async function renderCharacter (img, name, occ, nick, seasons, port, quote){
     </div>
     `
     document.querySelector('.content').appendChild(card);
-    //"error handling"
+    
+    //"error handling if there's no quote"
     const [firstName] = name.split(" ")
     const quoteValue = document.querySelector('#quoteLine');
     if (quoteValue.textContent === ",,undefined''") {
@@ -102,7 +148,7 @@ async function renderCharacter (img, name, occ, nick, seasons, port, quote){
 }
 
 function clearContent(){
-    document.querySelector('#searchbox').value = ""
+    document.querySelector('.searchbox').value = ""
     document.querySelector('.content').style.opacity = 0;
     document.querySelector('.content').innerHTML = ""
 }

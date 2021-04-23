@@ -8,4 +8,4 @@ CSS<br>
 Vanilla Javascript<br>
 API: https://breakingbadapi.com/ <br>
 
-Live Review:
+Live Preview: https://minho-sama.github.io/Breaking-Bad-API/
