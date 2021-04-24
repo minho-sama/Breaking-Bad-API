@@ -152,3 +152,6 @@ function clearContent(){
     document.querySelector('.content').style.opacity = 0;
     document.querySelector('.content').innerHTML = ""
 }
+
+//check for unhandled error
+window.addEventListener('unhandledrejection', event => console.error(event.reason));
